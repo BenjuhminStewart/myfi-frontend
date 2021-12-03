@@ -3,12 +3,8 @@ import "../App.css";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
 
-import Login from "./Login.js";
-import { Link } from "react-router-dom";
-
-let i = 0;
-
 function register(
+  e,
   fname,
   minitial,
   lname,
@@ -17,7 +13,9 @@ function register(
   confirmPassword,
   phoneNo
 ) {
-  //console.log(`fname: ${fname} \nminitial: ${minitial} \nlname: ${lname} \nusername: ${username} \npassword: ${password} \npasswordConf: ${confirmPassword} \nphoneNo: ${phoneNo}`);
+  // prevent event from refreshing page.
+  e.preventDefault();
+
   // https://cors-anywhere.herokuapp.com/
   if (password === confirmPassword) {
     // api route
@@ -32,18 +30,26 @@ function register(
       phoneNumber: phoneNo,
     };
 
-    console.log(user);
-    console.log(JSON.stringify(user));
+    //console.log(user);
+    //console.log(JSON.stringify(user));
     axios
-      .get(APICallString, user)
+      .post(APICallString, user)
       .then((res) => {
         console.log(res.data);
-        console.log(res.data);
-        console.log(res.data);
+        console.log(res.data.success);
+        console.log(
+          "Successfully created user with the following credentials:"
+        );
+        console.log(`username: ${username} \npassword: ${password}`);
+        if (res.data.success)
+          window.location.href = "https://tcss445-myfi.herokuapp.com/";
+        else console.log("no redirect");
       })
       .catch((err) => {
         console.log(err);
       });
+  } else {
+    console.log("incorrect password");
   }
 }
 
@@ -62,8 +68,9 @@ const RegisterForm = () => {
     <div className="box bg-dark text-white">
       <Form
         className="login-form"
-        onSubmit={() =>
+        onSubmit={(e) =>
           register(
+            e,
             fname,
             minitial,
             lname,
@@ -73,7 +80,6 @@ const RegisterForm = () => {
             phoneNo
           )
         }
-        // action="/"
       >
         <h2 className="text-center mb-3 p-3">Register</h2>
         <FormGroup>

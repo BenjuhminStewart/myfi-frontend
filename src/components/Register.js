@@ -32,6 +32,8 @@ function register(
       phoneNumber: phoneNo,
     };
 
+    console.log(`user: ${user}`);
+
     axios
       .get(APICallString, user)
       .then((res) => {
@@ -60,17 +62,15 @@ const RegisterForm = () => {
     <div className="box bg-dark text-white">
       <Form
         className="login-form"
-        onSubmit={() =>
-          register(
-            fname,
-            minitial,
-            lname,
-            username,
-            password,
-            confirmPassword,
-            phoneNo
-          )
-        }
+        onSubmit={register(
+          fname,
+          minitial,
+          lname,
+          username,
+          password,
+          confirmPassword,
+          phoneNo
+        )}
       >
         <h2 className="text-center mb-3 p-3">Register</h2>
         <FormGroup>
@@ -130,10 +130,7 @@ const RegisterForm = () => {
             onChange={(e) => setPhoneNo(e.target.value)}
           />
         </FormGroup>
-        <Button
-          className="myfi-bg tcolor-black btn-lg w-100 mt-2"
-          type="submit"
-        >
+        <Button className="myfi-bg tcolor-black btn-lg w-100 mt-2">
           <span>Register</span>
         </Button>
       </Form>

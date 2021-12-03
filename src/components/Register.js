@@ -22,7 +22,7 @@ function register(
   if (password === confirmPassword) {
     // api route
     // https://tcss445-myfi.herokuapp.com
-    var APICallString = "http://tcss445-myfi.herokuapp.com/api/register";
+    var APICallString = "https://tcss445-myfi.herokuapp.com/api/register";
     const user = {
       first: fname,
       minit: minitial,

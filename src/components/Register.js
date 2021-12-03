@@ -22,7 +22,7 @@ function register(
   if (password === confirmPassword) {
     // api route
     // https://tcss445-myfi.herokuapp.com
-    var APICallString = "https://tcss445-myfi.herokuapp.com/api/register";
+    var APICallString = "https://tcss445-myfi.herokuapp.com/api/register/";
     const user = {
       first: fname,
       minit: minitial,
@@ -32,13 +32,14 @@ function register(
       phoneNumber: phoneNo,
     };
 
-    console.log(`user: ${user}`);
-    var data = new FormData();
-    data.append(JSON.stringify(user));
+    console.log(user);
+    console.log(JSON.stringify(user));
     axios
-      .get(APICallString, data)
+      .get(APICallString, user)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
+        console.log(res.data);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -57,21 +58,22 @@ const RegisterForm = () => {
 
   //console.log(`fname: ${fname} \nminitial: ${minitial} \nlname: ${lname} \nusername: ${username} \npassword: ${password} \npasswordConf: ${confirmPassword} \nphoneNo: ${phoneNo}`);
 
-  // action="/"
-
   return (
     <div className="box bg-dark text-white">
       <Form
         className="login-form"
-        onSubmit={register(
-          fname,
-          minitial,
-          lname,
-          username,
-          password,
-          confirmPassword,
-          phoneNo
-        )}
+        onSubmit={() =>
+          register(
+            fname,
+            minitial,
+            lname,
+            username,
+            password,
+            confirmPassword,
+            phoneNo
+          )
+        }
+        // action="/"
       >
         <h2 className="text-center mb-3 p-3">Register</h2>
         <FormGroup>

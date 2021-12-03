@@ -33,9 +33,10 @@ function register(
     };
 
     console.log(`user: ${user}`);
-
+    var data = new FormData();
+    data.append(JSON.stringify(user));
     axios
-      .get(APICallString, user)
+      .get(APICallString, data)
       .then((res) => {
         console.log(res);
       })

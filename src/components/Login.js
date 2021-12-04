@@ -2,21 +2,37 @@ import React, { useState } from "react";
 import "../App.css";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { GithubLoginButton } from "react-social-login-buttons";
+import { Link } from "react-router-dom";
 
-//import axios from 'axios';
+import axios from "axios";
 
-import Register from "./Register.js";
+function login(e, username, password) {
+  e.preventDefault();
 
-import { BrowserRouter as Router, Link } from "react-router-dom";
+  var APICallString = "https://tcss445-myfi.herokuapp.com/api/login/";
 
-// function validateLogin(event) {
-//   var APICallString = "localhost:5000/login";
-//   axios.post(APICallString).then(res => {
-//     res ! empty
-//   }).catch(err => {
-//     console.log(err);
-//   });
-// }
+  const user = {
+    username: username,
+    password: password,
+  };
+
+  axios
+    .get(APICallString, user)
+    .then((res) => {
+      console.log("Signed in Successfully");
+      // if (res.data.success) {
+      //   window.location.href = "https://tcss445-myfi.herokuapp.com/home/";
+      // } else {
+      //   console.log("no redirect");
+      // }
+    })
+    .catch((err) => {
+      console.log("hello - fail");
+      console.log(user.username);
+      console.log(user.password);
+      console.log(err);
+    });
+}
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -26,7 +42,10 @@ const LoginForm = () => {
 
   return (
     <div className="box bg-dark text-white">
-      <Form className="login-form" action="/home">
+      <Form
+        className="login-form"
+        onSubmit={(e) => login(e, username, password)}
+      >
         <h1 className="text-center text-decoration-none mt-5">
           <span className="font-weight-bold">My</span>
           <span className="myfi-text">Fi</span>
@@ -47,10 +66,7 @@ const LoginForm = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </FormGroup>
-        <Button
-          className="myfi-bg tcolor-black btn-lg w-100 mt-2"
-          type="submit"
-        >
+        <Button className="myfi-bg tcolor-black btn-lg w-100 mt-2">
           <span>Log In</span>
         </Button>
         <div className="text-center pt-3">

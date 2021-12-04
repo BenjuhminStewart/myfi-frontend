@@ -27,7 +27,7 @@ const LoginForm = () => {
         if (res.data.success) {
           setError(false);
           console.log("Signed in Successfully");
-          //window.location.href = "https://tcss445-myfi.herokuapp.com/home";
+          window.location.href = "https://tcss445-myfi.herokuapp.com/home";
         } else {
           setError(true);
           console.log("no redirect");

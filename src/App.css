@@ -1,6 +1,8 @@
 html,
 body {
   margin: 0px;
+  height: 100%;
+  width: 100%;
 }
 
 .box {
@@ -19,6 +21,10 @@ body {
   height: 100%;
 }
 
+.myfi-bg {
+  background-color: rgba(59, 233, 59, 0.692) !important;
+}
+
 .myfi-text {
   color: rgb(59, 233, 59);
 }
@@ -35,6 +41,6 @@ body {
   color: black !important;
 }
 
-.myfi-bg {
-  background-color: rgba(59, 233, 59, 0.692) !important;
+.invalid-credentials {
+  color: #ff4d4d !important;
 }

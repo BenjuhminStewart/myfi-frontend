@@ -3,56 +3,6 @@ import "../App.css";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
 
-function register(
-  e,
-  fname,
-  minitial,
-  lname,
-  username,
-  password,
-  confirmPassword,
-  phoneNo
-) {
-  // prevent event from refreshing page.
-  e.preventDefault();
-
-  // https://cors-anywhere.herokuapp.com/
-  if (password === confirmPassword) {
-    // api route
-    // https://tcss445-myfi.herokuapp.com
-    var APICallString = "https://tcss445-myfi.herokuapp.com/api/register/";
-    const user = {
-      first: fname,
-      minit: minitial,
-      last: lname,
-      username: username,
-      password: password,
-      phoneNumber: phoneNo,
-    };
-
-    //console.log(user);
-    //console.log(JSON.stringify(user));
-    axios
-      .post(APICallString, user)
-      .then((res) => {
-        console.log(res.data);
-        console.log(res.data.success);
-        console.log(
-          "Successfully created user with the following credentials:"
-        );
-        console.log(`username: ${username} \npassword: ${password}`);
-        if (res.data.success)
-          window.location.href = "https://tcss445-myfi.herokuapp.com/";
-        else console.log("no redirect");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  } else {
-    console.log("incorrect password");
-  }
-}
-
 const RegisterForm = () => {
   const [fname, setFname] = useState("");
   const [minitial, setMinitial] = useState("");
@@ -62,25 +12,54 @@ const RegisterForm = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
 
-  //console.log(`fname: ${fname} \nminitial: ${minitial} \nlname: ${lname} \nusername: ${username} \npassword: ${password} \npasswordConf: ${confirmPassword} \nphoneNo: ${phoneNo}`);
+  // boolean values representing errors
+  const pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+  const [passwordError, setPasswordError] = useState(false);
+  const [passwordMatchError, setPasswordMatchError] = useState(false);
+
+  // TODO: validate fname, minit, lname, phoneNo
+
+  const register = (e) => {
+    e.preventDefault();
+
+    if (password === confirmPassword) {
+      setPasswordMatchError(false);
+
+      // api route
+      var APICallString = "https://tcss445-myfi.herokuapp.com/api/register/";
+      const user = {
+        first: fname,
+        minit: minitial,
+        last: lname,
+        username: username,
+        password: password,
+        phoneNumber: phoneNo,
+      };
+
+      if (password.match(pattern)) {
+        setPasswordError(false);
+        axios
+          .post(APICallString, user)
+          .then((res) => {
+            if (res.data.success)
+              window.location.href = "https://tcss445-myfi.herokuapp.com/";
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        setPasswordError(true);
+      }
+    } else {
+      setPasswordMatchError(true);
+      setPasswordError(false);
+      console.log("passwords don't match");
+    }
+  };
 
   return (
     <div className="box bg-dark text-white">
-      <Form
-        className="login-form"
-        onSubmit={(e) =>
-          register(
-            e,
-            fname,
-            minitial,
-            lname,
-            username,
-            password,
-            confirmPassword,
-            phoneNo
-          )
-        }
-      >
+      <Form className="login-form" onSubmit={(e) => register(e)}>
         <h2 className="text-center mb-3 p-3">Register</h2>
         <FormGroup>
           <Label>First Name</Label>
@@ -111,6 +90,7 @@ const RegisterForm = () => {
           <Input
             type="username"
             placeholder="Username"
+            autoComplete="off"
             onChange={(e) => setUsername(e.target.value)}
           />
         </FormGroup>
@@ -119,7 +99,10 @@ const RegisterForm = () => {
           <Input
             type="password"
             placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
+            autoComplete="new-password"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
           />
         </FormGroup>
         <FormGroup>
@@ -142,6 +125,32 @@ const RegisterForm = () => {
         <Button className="myfi-bg tcolor-black btn-lg w-100 mt-2">
           <span>Register</span>
         </Button>
+        {passwordMatchError && (
+          <div className="text-center pt-3">
+            <span className="invalid-credentials">Passwords do not match</span>
+          </div>
+        )}
+        {passwordError && (
+          <div className="text-center pt-3">
+            <span className="invalid-credentials">
+              Password must meet the following criteria:
+            </span>
+            <ul className="pt-3">
+              <li className="invalid-credentials">
+                Contains at least one number character
+              </li>
+              <li className="invalid-credentials">
+                Contains at least one lowercase character
+              </li>
+              <li className="invalid-credentials">
+                Contains at least one uppercase character
+              </li>
+              <li className="invalid-credentials">
+                Is at least 8 characters long
+              </li>
+            </ul>
+          </div>
+        )}
       </Form>
     </div>
   );

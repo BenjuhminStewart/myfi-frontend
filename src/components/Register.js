@@ -18,6 +18,12 @@ const RegisterForm = () => {
   const [passwordMatchError, setPasswordMatchError] = useState(false);
 
   // TODO: validate fname, minit, lname, phoneNo
+  const [blankFnameError, setBlankFnameError] = useState("");
+  const [blankMinitialError, setBlankMinitialError] = useState("");
+  const [blankLnameError, setBlankLnameError] = useState("");
+  const [blankUsernameError, setBlankUsernameError] = useState("");
+  const [blankPasswordError, setBlankPasswordError] = useState("");
+  const [blankPhoneNoError, setBlankPhoneNoError] = useState("");
 
   const register = (e) => {
     e.preventDefault();
@@ -35,6 +41,17 @@ const RegisterForm = () => {
         password: password,
         phoneNumber: phoneNo,
       };
+
+      // validate against blank input IMPORTANT WHERE SHOULD I BE TRIMMING SHOULD I BE TRIMMING
+      setBlankFnameError(fname.trim().length == 0);
+      setBlankMinitialError(minitial.trim().length == 0);
+      setBlankLnameError(lname.trim().length == 0);
+      setBlankUsernameError(username.trim().length == 0);
+      setBlankPasswordError(
+        password.length == 0 && confirmPassword.length == 0
+      );
+
+      // validate against invalid input
 
       if (password.match(pattern)) {
         setPasswordError(false);
@@ -69,6 +86,13 @@ const RegisterForm = () => {
             onChange={(e) => setFname(e.target.value)}
           />
         </FormGroup>
+        {blankFnameError && (
+          <div>
+            <span className="invalid-credentials">
+              First name cannot be blank
+            </span>
+          </div>
+        )}
         <FormGroup>
           <Label>Middle Initial</Label>
           <Input
@@ -77,6 +101,13 @@ const RegisterForm = () => {
             onChange={(e) => setMinitial(e.target.value)}
           />
         </FormGroup>
+        {blankMinitialError && (
+          <div>
+            <span className="invalid-credentials">
+              Middle initial cannot be blank
+            </span>
+          </div>
+        )}
         <FormGroup>
           <Label>Last Name</Label>
           <Input
@@ -85,6 +116,13 @@ const RegisterForm = () => {
             onChange={(e) => setLname(e.target.value)}
           />
         </FormGroup>
+        {blankLnameError && (
+          <div>
+            <span className="invalid-credentials">
+              Last name cannot be blank
+            </span>
+          </div>
+        )}
         <FormGroup>
           <Label>Username</Label>
           <Input
@@ -94,6 +132,13 @@ const RegisterForm = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </FormGroup>
+        {blankUsernameError && (
+          <div>
+            <span className="invalid-credentials">
+              Username cannot be blank
+            </span>
+          </div>
+        )}
         <FormGroup>
           <Label>Password</Label>
           <Input
@@ -113,6 +158,13 @@ const RegisterForm = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </FormGroup>
+        {blankUsernameError && (
+          <div>
+            <span className="invalid-credentials">
+              Passwords cannot be blank
+            </span>
+          </div>
+        )}
         <p className="text-center mt-3 pt-3">Optional</p>
         <FormGroup>
           <Label>Phone Number</Label>

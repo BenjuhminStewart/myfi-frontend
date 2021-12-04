@@ -44,3 +44,8 @@ body {
 .invalid-credentials {
   color: #ff4d4d !important;
 }
+
+.requirements {
+  display: inline-block;
+  text-align: left;
+}

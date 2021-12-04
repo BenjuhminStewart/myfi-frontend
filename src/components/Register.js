@@ -18,12 +18,14 @@ const RegisterForm = () => {
   const [passwordMatchError, setPasswordMatchError] = useState(false);
 
   // TODO: validate fname, minit, lname, phoneNo
-  const [blankFnameError, setBlankFnameError] = useState("");
-  const [blankMinitialError, setBlankMinitialError] = useState("");
-  const [blankLnameError, setBlankLnameError] = useState("");
-  const [blankUsernameError, setBlankUsernameError] = useState("");
-  const [blankPasswordError, setBlankPasswordError] = useState("");
-  const [blankPhoneNoError, setBlankPhoneNoError] = useState("");
+  const [blankFnameError, setBlankFnameError] = useState(false);
+  const [blankMinitialError, setBlankMinitialError] = useState(false);
+  const [blankLnameError, setBlankLnameError] = useState(false);
+  const [blankUsernameError, setBlankUsernameError] = useState(false);
+  const [blankPasswordError, setBlankPasswordError] = useState(false);
+  const [blankPhoneNoError, setBlankPhoneNoError] = useState(false);
+
+  const [usernameErrorMsg, setUsernameErrorMsg] = useState("");
 
   const register = (e) => {
     e.preventDefault();
@@ -53,23 +55,28 @@ const RegisterForm = () => {
 
       // validate against invalid input
 
+      console.log("outside" + password.match(pattern));
       if (password.match(pattern)) {
+        console.log("inside" + password.match(pattern));
         setPasswordError(false);
         axios
           .post(APICallString, user)
           .then((res) => {
+            console.log("res: " + res);
+            console.log("res.detail: " + res.detail);
+            setUsernameErrorMsg(res.detail);
             if (res.data.success)
               window.location.href = "https://tcss445-myfi.herokuapp.com/";
           })
           .catch((err) => {
-            console.log(err);
+            console.log("err: " + err);
+            console.log("err.detail: " + err.detail);
           });
       } else {
         setPasswordError(true);
       }
     } else {
       setPasswordMatchError(true);
-      setPasswordError(false);
       console.log("passwords don't match");
     }
   };
@@ -85,29 +92,28 @@ const RegisterForm = () => {
             placeholder="First"
             onChange={(e) => setFname(e.target.value)}
           />
+          {blankFnameError && (
+            <div>
+              <span className="text-danger">First name cannot be blank</span>
+            </div>
+          )}
         </FormGroup>
-        {blankFnameError && (
-          <div>
-            <span className="invalid-credentials">
-              First name cannot be blank
-            </span>
-          </div>
-        )}
         <FormGroup>
           <Label>Middle Initial</Label>
           <Input
             type="minitial"
             placeholder="M"
+            maxLength="1"
             onChange={(e) => setMinitial(e.target.value)}
           />
+          {blankMinitialError && (
+            <div>
+              <span className="text-danger">
+                Middle initial cannot be blank
+              </span>
+            </div>
+          )}
         </FormGroup>
-        {blankMinitialError && (
-          <div>
-            <span className="invalid-credentials">
-              Middle initial cannot be blank
-            </span>
-          </div>
-        )}
         <FormGroup>
           <Label>Last Name</Label>
           <Input
@@ -115,14 +121,12 @@ const RegisterForm = () => {
             placeholder="Last"
             onChange={(e) => setLname(e.target.value)}
           />
+          {blankLnameError && (
+            <div>
+              <span className="text-danger">Last name cannot be blank</span>
+            </div>
+          )}
         </FormGroup>
-        {blankLnameError && (
-          <div>
-            <span className="invalid-credentials">
-              Last name cannot be blank
-            </span>
-          </div>
-        )}
         <FormGroup>
           <Label>Username</Label>
           <Input
@@ -131,14 +135,12 @@ const RegisterForm = () => {
             autoComplete="off"
             onChange={(e) => setUsername(e.target.value)}
           />
+          {blankUsernameError && (
+            <div>
+              <span className="text-danger">{usernameErrorMsg}</span>
+            </div>
+          )}
         </FormGroup>
-        {blankUsernameError && (
-          <div>
-            <span className="invalid-credentials">
-              Username cannot be blank
-            </span>
-          </div>
-        )}
         <FormGroup>
           <Label>Password</Label>
           <Input
@@ -149,6 +151,22 @@ const RegisterForm = () => {
               setPassword(e.target.value);
             }}
           />
+          {passwordError && (
+            //text-center
+            <div className="pt-3">
+              <span className="text-danger">Password must contain:</span>
+              <ul className="requirements pt-3">
+                <li className="text-danger">At least one number</li>
+                <li className="text-danger">
+                  At least one lowercase character
+                </li>
+                <li className="text-danger">
+                  At least one uppercase character
+                </li>
+                <li className="text-danger">At least 8 characters</li>
+              </ul>
+            </div>
+          )}
         </FormGroup>
         <FormGroup>
           <Label>Confirm Password</Label>
@@ -157,14 +175,12 @@ const RegisterForm = () => {
             placeholder="Confirm Password"
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
+          {passwordMatchError && (
+            <div>
+              <span className="text-danger">Passwords do not match</span>
+            </div>
+          )}
         </FormGroup>
-        {blankUsernameError && (
-          <div>
-            <span className="invalid-credentials">
-              Passwords cannot be blank
-            </span>
-          </div>
-        )}
         <p className="text-center mt-3 pt-3">Optional</p>
         <FormGroup>
           <Label>Phone Number</Label>
@@ -174,35 +190,9 @@ const RegisterForm = () => {
             onChange={(e) => setPhoneNo(e.target.value)}
           />
         </FormGroup>
-        <Button className="myfi-bg tcolor-black btn-lg w-100 mt-2">
+        <Button className="myfi-bg tcolor-black btn-lg w-100 mt-2 pb-3">
           <span>Register</span>
         </Button>
-        {passwordMatchError && (
-          <div className="text-center pt-3">
-            <span className="invalid-credentials">Passwords do not match</span>
-          </div>
-        )}
-        {passwordError && (
-          <div className="text-center pt-3">
-            <span className="invalid-credentials">
-              Password must meet the following criteria:
-            </span>
-            <ul className="pt-3">
-              <li className="invalid-credentials">
-                Contains at least one number character
-              </li>
-              <li className="invalid-credentials">
-                Contains at least one lowercase character
-              </li>
-              <li className="invalid-credentials">
-                Contains at least one uppercase character
-              </li>
-              <li className="invalid-credentials">
-                Is at least 8 characters long
-              </li>
-            </ul>
-          </div>
-        )}
       </Form>
     </div>
   );

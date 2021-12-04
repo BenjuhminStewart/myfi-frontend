@@ -22,12 +22,12 @@ const LoginForm = () => {
     };
 
     axios
-      .post(APICallString, user)
+      .post(APICallString, user, { withCredentials: true })
       .then((res) => {
         if (res.data.success) {
           setError(false);
           console.log("Signed in Successfully");
-          window.location.href = "https://tcss445-myfi.herokuapp.com/home/";
+          //window.location.href = "https://tcss445-myfi.herokuapp.com/home";
         } else {
           setError(true);
           console.log("no redirect");

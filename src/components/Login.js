@@ -15,19 +15,21 @@ function login(e, username, password) {
     username: username,
     password: password,
   };
-
+  console.log(user);
   axios
-    .get(APICallString, user)
+    .post(APICallString, user)
     .then((res) => {
       console.log("Signed in Successfully");
-      // if (res.data.success) {
-      //   window.location.href = "https://tcss445-myfi.herokuapp.com/home/";
-      // } else {
-      //   console.log("no redirect");
-      // }
+      if (res.data.success) {
+        window.location.href = "https://tcss445-myfi.herokuapp.com/home/";
+      } else {
+        console.log("no redirect");
+      }
     })
     .catch((err) => {
       console.log("hello - fail");
+      console.log(user);
+      console.log(JSON.stringify(user));
       console.log(user.username);
       console.log(user.password);
       console.log(err);

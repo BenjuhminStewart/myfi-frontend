@@ -8,7 +8,7 @@ export const Transaction = ({ transaction }) => {
   const type = transaction.amount < 0 ? "minus" : "plus";
   return (
     <li className={type}>
-      {transaction.text}
+      {transaction.tId}
       <span>
         {sign}${Math.abs(transaction.amount)}
       </span>

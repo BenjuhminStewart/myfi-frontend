@@ -3,7 +3,12 @@
 export default (state, action) => {
   switch (action.type) {
     // delete transaction query here?
-
+    case "GET_TRANSACTION":
+      return {
+        ...state,
+        loading: false,
+        transactions: action.payload,
+      };
     case "DELETE_TRANSACTION":
       return {
         ...state, //send current state

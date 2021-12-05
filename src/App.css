@@ -1,6 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora&display=swap");
+* {
+  font-family: "Sora", sans-serif !important;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
   margin: 0px;
+  height: 100%;
+  width: 100%;
 }
 
 .box {
@@ -19,7 +29,15 @@ body {
   height: 100%;
 }
 
+.myfi-bg {
+  background-color: rgba(59, 233, 59, 0.692) !important;
+}
+
 .myfi-text {
+  color: rgb(59, 233, 59);
+}
+
+.myfi-text-nohover {
   color: rgb(59, 233, 59);
 }
 
@@ -35,6 +53,11 @@ body {
   color: black !important;
 }
 
-.myfi-bg {
-  background-color: rgba(59, 233, 59, 0.692) !important;
+.invalid-credentials {
+  color: #ff4d4d !important;
+}
+
+.requirements {
+  display: inline-block;
+  text-align: left;
 }

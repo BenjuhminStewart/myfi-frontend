@@ -4,7 +4,6 @@ const Transactions = () => {
   return (
     <div className="box bg-dark text-white">
       <Navbar />
-      <h1>TRANSACTIONS</h1>
     </div>
   );
 };

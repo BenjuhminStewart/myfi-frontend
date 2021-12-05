@@ -20,8 +20,10 @@ export const NavLink = styled(Link)`
   text-decoration: none;
   padding: 0 1rem;
   height: 100%;
+  transition: all 0.1s ease-in-out;
   cursor: pointer;
   &:hover {
+    transition: all 0.1s ease-in-out;
     color: #697f69;
   }
   &.active {
@@ -79,12 +81,12 @@ export const NavBtnLink = styled(Link)`
   outline: none;
   border: none;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.15s ease-in-out;
   text-decoration: none;
   /* Second Nav */
   margin-left: 24px;
   &:hover {
-    transition: all 0.2s ease-in-out;
+    transition: all 0.15s ease-in-out;
     background: red;
     color: #fff;
   }

@@ -12,8 +12,9 @@ const Navbar = () => {
   return (
     <>
       <Nav>
-        <NavLink to="/home" className="logo">
-          MyFi
+        <NavLink to="/home" className="logo-container">
+          <span className="logo">My</span>
+          <span className="logo-color">Fi</span>
         </NavLink>
         <Bars />
         <NavMenu>
@@ -23,8 +24,11 @@ const Navbar = () => {
           <NavLink to="/transactions" activeStyle>
             Transactions
           </NavLink>
-          <NavLink to="/accounts" activeStyle>
-            Accounts
+          <NavLink to="/checkings" activeStyle>
+            Checkings
+          </NavLink>
+          <NavLink to="/savings" activeStyle>
+            Savings
           </NavLink>
           <NavLink to="/settings" activeStyle>
             Settings

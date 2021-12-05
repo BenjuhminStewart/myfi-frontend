@@ -1,19 +1,24 @@
-import "./components/Login.js";
-import Home from "./components/Home.js";
-import Login from "./components/Login.js";
-import Register from "./components/Register.js";
-import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
+import React from "react";
+import { Header } from "./components/Header";
+import { Balance } from "./components/Balance";
+import { IncomeAndExpenses } from "./components/IncomeAndExpenses";
+import { TransactionList } from "./components/TransactionList";
+import { AddTransaction } from "./components/AddTransaction";
+
+import { GlobalProvider } from "./context/GlobalState";
+
+import "./App.css";
 
 export default function App() {
   return (
-
-    <Router>
-       <Routes>
-          <Route exact path = "/" element = {<Login />} />
-          <Route path = "/register" element = {<Register />} />
-          <Route path = "/home" element = {<Home />} />
-        </Routes>
-    </Router>
-
-  )
+    <GlobalProvider>
+      <Header />
+      <div className="container">
+        <Balance />
+        <IncomeAndExpenses />
+        <TransactionList />
+        <AddTransaction />
+      </div>
+    </GlobalProvider>
+  );
 }

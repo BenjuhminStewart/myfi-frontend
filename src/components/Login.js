@@ -45,7 +45,7 @@ const LoginForm = () => {
       <Form className="login-form" onSubmit={(e) => login(e)}>
         <h1 className="text-center text-decoration-none mt-5">
           <span className="font-weight-bold">My</span>
-          <span className="myfi-text">Fi</span>
+          <span className="myfi-text-nohover">Fi</span>
         </h1>
         <FormGroup>
           <Label className="mt-4">Username</Label>
@@ -76,7 +76,7 @@ const LoginForm = () => {
         </div>
         <GithubLoginButton className="mt-3 mb-3" />
         <div className="text-center">
-          <Link to="/Register" className="text-decoration-none myfi-text">
+          <Link to="/register" className="text-decoration-none myfi-text">
             Register
           </Link>
           <span className="p-2">|</span>

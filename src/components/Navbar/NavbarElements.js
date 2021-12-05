@@ -24,7 +24,7 @@ export const NavLink = styled(Link)`
   cursor: pointer;
   &:hover {
     transition: all 0.1s ease-in-out;
-    color: #697f69;
+    color: rgb(59, 233, 59, 65);
   }
   &.active {
     color: rgb(59, 233, 59);

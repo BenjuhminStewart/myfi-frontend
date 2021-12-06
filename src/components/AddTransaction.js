@@ -41,7 +41,7 @@ export const AddTransaction = () => {
           />
         </div>
         <div>
-          <label for="selectCategory">Currency</label>
+          <label htmlFor="selectCategory">Currency</label>
           <select className="form-select">
             <option value="none" selected disabled hidden>
               Select a Currency

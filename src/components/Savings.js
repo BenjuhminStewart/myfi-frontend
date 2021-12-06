@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar.js";
 export const Savings = () => {
   const fetchSavings = () => {
     var APICallString = "https://tcss445-myfi.herokuapp.com/api/account/";

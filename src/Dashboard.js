@@ -5,7 +5,7 @@ import { IncomeAndExpenses } from "./components/IncomeAndExpenses";
 import { TransactionList } from "./components/TransactionList";
 import { AddTransaction } from "./components/AddTransaction";
 
-import Navbar from "./components/Navbar/";
+import Navbar from "./components/Navbar/Navbar.js";
 
 import "./Dashboard.css";
 

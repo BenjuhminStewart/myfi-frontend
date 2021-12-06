@@ -36,11 +36,11 @@ export default function App() {
           }
         />
         <Route exact path="/register" element={<Register />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/transactions" element={<Transactions />} />
-        <Route path="/checkings" element={<Checkings />} />
-        <Route path="/savings" element={<Savings />} />
-        <Route path="/settings" element={<Settings />} />
+        <Route exact path="/home" element={<Dashboard />} />
+        <Route exact path="/transactions" element={<Dashboard />} />
+        <Route exact path="/checkings" element={<Checkings />} />
+        <Route exact path="/savings" element={<Savings />} />
+        <Route exact path="/settings" element={<Dashboard />} />
       </Routes>
     </Router>
   );

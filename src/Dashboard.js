@@ -10,7 +10,7 @@ import "./App.css";
 
 export const Dashboard = () => {
   return (
-    <>
+    <div>
       <div className="left-element">
         <Balance />
         <IncomeAndExpenses />
@@ -19,6 +19,6 @@ export const Dashboard = () => {
       <div className="right-element">
         <TransactionList />
       </div>
-    </>
+    </div>
   );
 };

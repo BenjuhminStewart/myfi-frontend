@@ -12,8 +12,6 @@ body {
   background-color: #212529 !important;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
   margin: 0;
   font-family: "Lato", sans-serif;
@@ -28,17 +26,24 @@ body {
 }
 
 .left-element {
-  overflow: hidden;
+  float: left;
+  width: 600px;
   min-height: 50px;
-  border: 2px dashed #f0f;
+  padding: 75px 75px 75px 75px;
+  margin-left: 100px;
+  /*border: 2px dashed #fff;*/
 }
 
 .right-element {
-  float: right;
-  width: 450px;
+  overflow: hidden;
   min-height: 50px;
-  margin-left: 10px;
-  border: 2px dashed #00f;
+  min-width: 500px;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-top: 128px;
+  padding-left: 10%;
+  padding-right: 3%;
+  /*border: 2px dashed #fff;*/
 }
 
 h1 {

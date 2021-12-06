@@ -34,18 +34,39 @@ export const GlobalProvider = ({ children }) => {
   }
 
   // actions, which calls reducer
-  function deleteTransaction(id) {
-    dispatch({
-      type: "DELETE_TRANSACTION",
-      payload: id,
-    });
+  async function deleteTransaction(id) {
+    try {
+      const res = await axios.delete(
+        `https://tcss445-myfi.herokuapp.com/api/transactions/${id}`
+      );
+      dispatch({
+        type: "DELETE_TRANSACTION",
+        payload: id,
+      });
+    } catch (err) {
+      dispatch({
+        type: "TRANSACTION_ERR",
+        payload: err.details,
+      });
+    }
   }
 
-  function addTransaction(transaction) {
-    dispatch({
-      type: "ADD_TRANSACTION",
-      payload: transaction,
-    });
+  async function addTransaction(transaction) {
+    try {
+      const res = await axios.post(
+        `https://tcss445-myfi.herokuapp.com/api/transactions/`,
+        transaction
+      );
+      dispatch({
+        type: "ADD_TRANSACTION",
+        payload: res.data.transaction,
+      });
+    } catch (err) {
+      dispatch({
+        type: "TRANSACTION_ERR",
+        payload: err.details,
+      });
+    }
   }
 
   return (

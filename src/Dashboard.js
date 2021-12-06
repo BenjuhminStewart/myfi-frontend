@@ -11,12 +11,13 @@ import "./App.css";
 export const Dashboard = () => {
   return (
     <>
-      <Header />
-      <div className="container">
+      <div className="left-element">
         <Balance />
         <IncomeAndExpenses />
-        <TransactionList />
         <AddTransaction />
+      </div>
+      <div className="right-element">
+        <TransactionList />
       </div>
     </>
   );

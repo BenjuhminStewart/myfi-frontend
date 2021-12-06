@@ -4,15 +4,14 @@ import { GlobalContext } from "../context/GlobalState";
 export const AddTransaction = () => {
   const { addTransaction } = useContext(GlobalContext);
 
-  const [text, setText] = useState("");
+  const [desc, setDesc] = useState("");
   const [amount, setAmount] = useState(0);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     const transaction = {
-      id: Math.floor(Math.random() * 100000000),
-      text,
+      desc: desc,
       amount: +amount,
     };
 
@@ -23,20 +22,17 @@ export const AddTransaction = () => {
     <>
       <h3>Add new transaction</h3>
       <form onSubmit={onSubmit}>
-        <div className="form-control">
-          <label htmlFor="text">Text</label>
+        <div>
+          <label htmlFor="text">Description</label>
           <input
             type="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="Enter text..."
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
+            placeholder="Enter description..."
           />
         </div>
-        <div className="form-control">
-          <label htmlFor="amount">
-            Amount <br />
-            (negative - expense, positive - income)
-          </label>
+        <div>
+          <label htmlFor="amount">Amount</label>
           <input
             type="number"
             value={amount}
@@ -44,7 +40,29 @@ export const AddTransaction = () => {
             placeholder="Enter amount..."
           />
         </div>
-        <button className="btn">Add transaction</button>
+        <div>
+          <label for="selectCategory">Currency</label>
+          <select className="form-select">
+            <option value="none" selected disabled hidden>
+              Select a Currency
+            </option>
+            <option>Groceries</option>
+            <option>Charity</option>
+            <option>Groceries</option>
+          </select>
+        </div>
+        <div>
+          <label for="selectCategory">Currency</label>
+          <select className="form-select">
+            <option value="none" selected disabled hidden>
+              Select a Category
+            </option>
+            <option>Groceries</option>
+            <option>Charity</option>
+            <option>Groceries</option>
+          </select>
+        </div>
+        <button className="btn mt-4">Add transaction</button>
       </form>
     </>
   );

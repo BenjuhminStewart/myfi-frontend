@@ -13,7 +13,7 @@ export default (state, action) => {
       return {
         ...state, //send current state
         transactions: state.transactions.filter(
-          (transaction) => transaction.id != action.payload
+          (transaction) => transaction.tId != action.payload
         ),
       };
     case "ADD_TRANSACTION":

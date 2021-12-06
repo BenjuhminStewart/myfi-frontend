@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Balance } from "./components/Balance";
-import { IncomeAndExpenses } from "./components/IncomeAndExpenses";
-import { TransactionList } from "./components/TransactionList";
-import { AddTransaction } from "./components/AddTransaction";
+import { Balance } from "./subcomponents/Balance";
+import { IncomeAndExpenses } from "./subcomponents/IncomeAndExpenses";
+import { TransactionList } from "./subcomponents/TransactionList";
+import { AddTransaction } from "./subcomponents/AddTransaction";
 
-import Navbar from "./components/Navbar/Navbar.js";
+import Navbar from "../navbar/Navbar.js";
 
 import "./Dashboard.css";
 

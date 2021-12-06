@@ -1,9 +1,9 @@
 import React from "react";
-import { GlobalProvider } from "./context/GlobalState";
+import { GlobalProvider } from "./components/dashboard/context/GlobalState";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import "./Dashboard.css";
-import { Dashboard } from "./Dashboard";
+import "./components/dashboard/Dashboard.css";
+import { Dashboard } from "./components/dashboard/Dashboard";
 
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -12,14 +12,6 @@ import Savings from "./components/Savings";
 import Settings from "./components/Settings";
 import Checkings from "./components/Checkings";
 import Transactions from "./components/Transactions";
-
-const comp1 = () => {
-  return (
-    <GlobalProvider>
-      <Dashboard />
-    </GlobalProvider>
-  );
-};
 
 export default function App() {
   return (
@@ -36,11 +28,11 @@ export default function App() {
           }
         />
         <Route exact path="/register" element={<Register />} />
-        <Route exact path="/home" element={<Dashboard />} />
-        <Route exact path="/transactions" element={<Dashboard />} />
+        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/transactions" element={<Transactions />} />
         <Route exact path="/checkings" element={<Checkings />} />
         <Route exact path="/savings" element={<Savings />} />
-        <Route exact path="/settings" element={<Dashboard />} />
+        <Route exact path="/settings" element={<Settings />} />
       </Routes>
     </Router>
   );

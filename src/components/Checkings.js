@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import "../App.css";
 import { Form } from "reactstrap";
-import Navbar from "./Navbar";
+import Navbar from "./navbar/Navbar.js";
+
 export const Checkings = () => {
   const [codes, setCodes] = useState([]);
   const [memberid, setMemberid] = useState(0);

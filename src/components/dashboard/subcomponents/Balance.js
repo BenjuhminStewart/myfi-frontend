@@ -21,7 +21,7 @@ export const Balance = () => {
   return (
     <>
       <h4>Account Balance</h4>
-      <select>
+      <select className="form-select">
         {accounts.map((account) => (
           <Account key={accounts.checkings_id} account={account} />
         ))}

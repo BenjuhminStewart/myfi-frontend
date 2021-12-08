@@ -52,6 +52,7 @@ const RegisterForm = () => {
       setBlankPasswordError(
         password.length == 0 && confirmPassword.length == 0
       );
+      setBlankPhoneNoError(phoneNo.trim().length == 0);
 
       // validate against invalid input
 
@@ -181,7 +182,6 @@ const RegisterForm = () => {
             </div>
           )}
         </FormGroup>
-        <p className="text-center mt-3 pt-3">Optional</p>
         <FormGroup>
           <Label>Phone Number</Label>
           <Input
@@ -189,8 +189,13 @@ const RegisterForm = () => {
             placeholder="123-456-7890"
             onChange={(e) => setPhoneNo(e.target.value)}
           />
+          {blankPhoneNoError && (
+            <div>
+              <span className="text-danger">Phone number cannot be blank</span>
+            </div>
+          )}
         </FormGroup>
-        <Button className="myfi-bg tcolor-black btn-lg w-100 mt-2 pb-3">
+        <Button className="myfi-bg tcolor-black btn-lg w-100 mt-2">
           <span>Register</span>
         </Button>
       </Form>

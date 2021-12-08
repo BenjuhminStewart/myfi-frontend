@@ -2,14 +2,14 @@ import React from "react";
 import { GlobalProvider } from "./components/dashboard/context/GlobalState";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import "./components/dashboard/Dashboard.css";
+//import "./components/dashboard/Dashboard.css";
 import { Dashboard } from "./components/dashboard/Dashboard";
 
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
 import Savings from "./components/Savings";
-import Settings from "./components/Settings";
+import { Settings } from "./components/settings/Settings";
 import Checkings from "./components/Checkings";
 import Transactions from "./components/Transactions";
 

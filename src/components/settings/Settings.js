@@ -61,6 +61,7 @@ export const Settings = () => {
     setInvalidPhoneNoError(!/^\d+$/.test(phoneNo) || phoneNo.length != 10);
 
     if (password === confirmPassword) {
+      setSuccess(false);
       setPasswordMatchError(false);
       const data = {
         first_name: fname,
@@ -93,9 +94,11 @@ export const Settings = () => {
           setInvalidPhoneNoError(false);
         }
       } else {
+        setSuccess(false);
         setPasswordError(true);
       }
     } else {
+      setSuccess(false);
       setPasswordMatchError(true);
     }
   };

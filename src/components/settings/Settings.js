@@ -84,15 +84,14 @@ export const Settings = () => {
         } catch (err) {
           // set overall err to top priority
           setError(true);
-
-          setPasswordError(false);
-          setPasswordMatchError(false);
-          setBlankFnameError(false);
-          setBlankMinitialError(false);
-          setBlankLnameError(false);
-          setBlankPasswordFlag(false);
-          setInvalidPhoneNoError(false);
         }
+        setPasswordError(false);
+        setPasswordMatchError(false);
+        setBlankFnameError(false);
+        setBlankMinitialError(false);
+        setBlankLnameError(false);
+        setBlankPasswordFlag(false);
+        setInvalidPhoneNoError(false);
       } else {
         setSuccess(false);
         setPasswordError(true);

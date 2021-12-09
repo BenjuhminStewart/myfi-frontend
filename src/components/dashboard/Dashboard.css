@@ -102,7 +102,7 @@ h4 {
 }
 
 .money.plus {
-  color: #2ecc71;
+  color: rgba(59, 233, 59, 0.692);
 }
 
 .money.minus {
@@ -134,9 +134,9 @@ input[type="number"] {
   width: 100%;
 }
 
-.btn {
+.my-btn {
   cursor: pointer;
-  background-color: #2ecc71 !important;
+  background-color: rgba(59, 233, 59, 0.692) !important;
   box-shadow: var(--box-shadow);
   color: #fff;
   border: 0;
@@ -147,11 +147,11 @@ input[type="number"] {
   width: 100%;
 }
 
-.btn:hover {
-  opacity: 90%;
+.my-btn:hover {
+  opacity: 0.9;
 }
 
-.btn:focus,
+.my-btn:focus,
 .delete-btn:focus {
   outline: 0;
 }

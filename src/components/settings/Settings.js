@@ -236,7 +236,7 @@ export const Settings = () => {
             </div>
           )}
         </FormGroup>
-        <Button className="btn mt-3">Save Changes</Button>
+        <Button className="my-btn mt-3">Save Changes</Button>
         {error && (
           <p className="text-center text-danger">
             Something went wrong... <br />

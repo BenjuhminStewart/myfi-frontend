@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../App.css";
+import "./dashboard/Dashboard.css";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { GithubLoginButton } from "react-social-login-buttons";
 import { Link } from "react-router-dom";
@@ -63,7 +64,7 @@ const LoginForm = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </FormGroup>
-        <Button className="myfi-bg tcolor-black btn-lg w-100 mt-2">
+        <Button className="my-btn mt-3">
           <span>Log In</span>
         </Button>
         {error && (

@@ -107,6 +107,20 @@ export const Settings = () => {
       <Navbar />
       <Form className="login-form" onSubmit={onSubmit}>
         <FormGroup>
+          <Label className="mt-2" htmlFor="text">
+            Username
+          </Label>
+          <Input
+            className="input"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter description..."
+            disabled
+          />
+        </FormGroup>
+        <hr className="new5" />
+
+        <FormGroup>
           <Label className="mt-4" htmlFor="text">
             First Name
           </Label>
@@ -160,18 +174,7 @@ export const Settings = () => {
             </div>
           )}
         </FormGroup>
-        <FormGroup>
-          <Label className="mt-2" htmlFor="text">
-            Username
-          </Label>
-          <Input
-            className="input"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter description..."
-            disabled
-          />
-        </FormGroup>
+
         <FormGroup>
           <Label className="mt-2" htmlFor="text">
             New Password

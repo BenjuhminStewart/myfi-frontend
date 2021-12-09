@@ -8,9 +8,8 @@ import { Dashboard } from "./components/dashboard/Dashboard";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
-import Savings from "./components/Savings";
 import { Settings } from "./components/settings/Settings";
-import Checkings from "./components/Checkings";
+import Accounts from "./components/Accounts";
 import Transactions from "./components/Transactions";
 
 export default function App() {
@@ -30,8 +29,7 @@ export default function App() {
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/transactions" element={<Transactions />} />
-        <Route exact path="/checkings" element={<Checkings />} />
-        <Route exact path="/savings" element={<Savings />} />
+        <Route exact path="/accounts" element={<Accounts />} />
         <Route exact path="/settings" element={<Settings />} />
       </Routes>
     </Router>

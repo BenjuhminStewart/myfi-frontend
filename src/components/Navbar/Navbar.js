@@ -25,11 +25,8 @@ const Navbar = () => {
           <NavLink to="/dashboard" activeStyle>
             Transactions
           </NavLink>
-          <NavLink to="/checkings" activeStyle>
-            Checkings
-          </NavLink>
-          <NavLink to="/savings" activeStyle>
-            Savings
+          <NavLink to="/accounts" activeStyle>
+            Accounts
           </NavLink>
           <NavLink to="/settings" activeStyle>
             Settings

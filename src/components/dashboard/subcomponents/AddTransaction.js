@@ -1,8 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
+import { Category } from "./Category";
+import { Code } from "./Code";
 
 export const AddTransaction = () => {
-  const { addTransaction } = useContext(GlobalContext);
+  const { addTransaction, codes, getCodes, categories, getCategories } =
+    useContext(GlobalContext);
 
   const [desc, setDesc] = useState("");
   const [amount, setAmount] = useState(0);
@@ -17,6 +20,11 @@ export const AddTransaction = () => {
 
     addTransaction(transaction);
   };
+
+  useEffect(() => {
+    getCodes();
+    getCategories();
+  }, []);
 
   return (
     <>
@@ -46,9 +54,9 @@ export const AddTransaction = () => {
             <option value="none" selected disabled hidden>
               Select a Currency
             </option>
-            <option>Groceries</option>
-            <option>Charity</option>
-            <option>Groceries</option>
+            {codes.map((code) => (
+              <Code key={code} code={code} />
+            ))}
           </select>
         </div>
         <div>
@@ -57,12 +65,12 @@ export const AddTransaction = () => {
             <option value="none" selected disabled hidden>
               Select a Category
             </option>
-            <option>Groceries</option>
-            <option>Charity</option>
-            <option>Groceries</option>
+            {categories.map((category) => (
+              <Category key={category} category={category} />
+            ))}
           </select>
         </div>
-        <button className="btn mt-4">Add transaction</button>
+        <button className="my-btn mt-4">Add transaction</button>
       </form>
     </>
   );

@@ -3,11 +3,26 @@
 export default (state, action) => {
   switch (action.type) {
     // delete transaction query here?
+    case "GET_ACCOUNT":
+      return {
+        ...state,
+        loading: false,
+        accounts: action.payload,
+      };
     case "GET_TRANSACTION":
       return {
         ...state,
         loading: false,
         transactions: action.payload,
+        filtered: action.payload,
+      };
+    case "FILTER_TRANSACTIONS":
+      return {
+        ...state,
+        loading: false,
+        transactions: state.filtered.filter(
+          (transaction) => transaction.cId == action.payload
+        ),
       };
     case "DELETE_TRANSACTION":
       return {
@@ -20,6 +35,18 @@ export default (state, action) => {
       return {
         ...state, // send current state
         transactions: [action.payload, ...state.transactions],
+      };
+    case "GET_CATEGORIES":
+      return {
+        ...state,
+        loading: false,
+        categories: action.payload,
+      };
+    case "GET_CODES":
+      return {
+        ...state,
+        loading: false,
+        codes: action.payload,
       };
     default:
       return state;

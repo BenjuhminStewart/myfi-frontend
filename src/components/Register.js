@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../App.css";
+import "./dashboard/Dashboard.css";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
 
@@ -195,7 +196,7 @@ const RegisterForm = () => {
             </div>
           )}
         </FormGroup>
-        <Button className="myfi-bg tcolor-black btn-lg w-100 mt-2">
+        <Button className="my-btn mt-3">
           <span>Register</span>
         </Button>
       </Form>

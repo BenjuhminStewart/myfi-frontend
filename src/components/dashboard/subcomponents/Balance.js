@@ -36,16 +36,18 @@ export const Balance = () => {
 
   return (
     <>
-      <h4>Account Balance</h4>
-      <select
-        className="form-select pt-3 pb-3"
-        onChange={(e) => handleEvent(e)}
-      >
-        <option value={-1}>All Accounts</option>
-        {accounts.map((account) => (
-          <Account key={accounts.checkings_id} account={account} />
-        ))}
-      </select>
+      <div className="pb-3">
+        <h4>Account Balance</h4>
+        <select
+          className="form-select pt-3 pb-3"
+          onChange={(e) => handleEvent(e)}
+        >
+          <option value={-1}>All Accounts</option>
+          {accounts.map((account) => (
+            <Account key={accounts.checkings_id} account={account} />
+          ))}
+        </select>
+      </div>
       <h1>
         {negative}${Math.abs(balance).toFixed(2)}
       </h1>

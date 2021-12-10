@@ -23,7 +23,7 @@ export const GlobalProvider = ({ children }) => {
   async function getAccounts() {
     try {
       const res = await axios.get(
-        "https://tcss445-myfi.herokuapp.com/api/accounts/checkings"
+        "https://tcss445-myfi.herokuapp.com/api/accounts/"
       );
       dispatch({
         type: "GET_ACCOUNT",
@@ -40,7 +40,7 @@ export const GlobalProvider = ({ children }) => {
   async function getTransactions() {
     try {
       const res = await axios.get(
-        "https://tcss445-myfi.herokuapp.com/api/transactions/checkings",
+        "https://tcss445-myfi.herokuapp.com/api/transactions/",
         { withCredentials: true }
       );
       dispatch({

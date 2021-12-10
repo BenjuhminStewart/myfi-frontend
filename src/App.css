@@ -78,7 +78,7 @@ body {
 }
 
 .center-element {
-  width: 600px;
+  max-width: 400px;
   min-height: 50px;
   padding-top: 35px;
   margin: auto;

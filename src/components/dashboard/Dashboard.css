@@ -27,23 +27,26 @@ body {
 
 .left-element {
   float: left;
-  width: 600px;
+  width: 400px;
   min-height: 50px;
-  padding: 75px 75px 75px 75px;
-  margin-left: 100px;
-  /* border: 2px dashed #fff; */
+  margin-top: 75px;
+  /*border: 2px dashed #fff;*/
 }
 
 .right-element {
   overflow: hidden;
   min-height: 50px;
-  min-width: 500px;
-  margin-left: 10%;
-  margin-right: 100px;
-  padding-top: 75px;
-  padding-left: 10%;
-  padding-right: 3%;
-  /* border: 2px dashed #fff; */
+  min-width: 700px;
+  max-width: 700px;
+  margin-left: 100px;
+  margin-top: 70px;
+  /*border: 2px dashed #fff;*/
+}
+
+.centered-transactions {
+  height: 100vh; /* Magic here */
+  display: flex;
+  justify-content: center;
 }
 
 h1 {
@@ -71,6 +74,30 @@ h4 {
   color: #fff;
 }
 
+h5 {
+  margin: 0;
+  padding-top: 80px;
+  color: #fff;
+}
+
+.here-link:hover {
+  color: rgba(59, 233, 59, 0.692);
+}
+
+.here-link:visited {
+  color: rgba(42, 190, 42, 0.692);
+}
+
+.here-link:hover {
+  color: rgba(59, 233, 59, 0.692);
+}
+
+.here-link:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
 .inc-exp-container {
   background-color: #2e3236 !important;
   box-shadow: var(--box-shadow);
@@ -91,8 +118,8 @@ h4 {
 }
 
 .inc-exp-container > div {
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .money {

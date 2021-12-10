@@ -100,7 +100,6 @@ export const Accounts = () => {
             <label htmlFor="amount">Balance</label>
             <input
               type="number"
-              value={balance}
               onChange={(e) => setBalance(e.target.value)}
               placeholder="Enter Initial Balance..."
             />

@@ -40,10 +40,13 @@ export const Balance = () => {
 
   return (
     <>
-      <div className="pb-3">
-        <h4>Account Balance</h4>
+      <h4>Account Balance</h4>
+      <h2>
+        {negative}${Math.abs(balance).toFixed(2)}
+      </h2>
+      <div className="pb-3 pt-1">
         <select
-          className="form-select pt-3 pb-3"
+          className="form-select pt-2 pb-2"
           onChange={(e) => handleEvent(e)}
         >
           <option value={-1}>All Accounts</option>
@@ -52,9 +55,6 @@ export const Balance = () => {
           ))}
         </select>
       </div>
-      <h1>
-        {negative}${Math.abs(balance).toFixed(2)}
-      </h1>
     </>
   );
 };

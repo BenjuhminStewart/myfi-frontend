@@ -17,6 +17,7 @@ body {
   border-radius: 1px !important;
   min-height: 40px !important;
   max-height: 40px !important;
+  opacity: 0.8;
 }
 
 hr.new5 {

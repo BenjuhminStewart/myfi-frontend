@@ -119,7 +119,6 @@ export const Settings = () => {
           />
         </FormGroup>
         <hr className="new5" />
-
         <FormGroup>
           <Label className="mt-4" htmlFor="text">
             First Name

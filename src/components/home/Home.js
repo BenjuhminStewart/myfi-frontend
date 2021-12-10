@@ -11,14 +11,18 @@ export const Home = () => {
   return (
     <div>
       <Navbar />
-      <div className="left-box">
-        <HomeAccounts />
-      </div>
-      <div className="center-box">
-        <HomeCategory />
-      </div>
-      <div className="right-box">
-        <HomeSummary />
+      <div className="group1">
+        <div className="left-box">
+          <HomeAccounts />
+        </div>
+        <div className="categories">
+          <div className="center-box">
+            <HomeSummary />
+          </div>
+          <div className="right-box">
+            <HomeCategory />
+          </div>
+        </div>
       </div>
     </div>
   );

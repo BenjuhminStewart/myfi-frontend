@@ -4,6 +4,12 @@
     2px 2px 2px 2px rgba(255, 255, 255, 0.1) !important;
 }
 
+body {
+  background-image: linear-gradient(#8d8d8d13 0.1%, #050505a4 40%) !important;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 .input {
   color: #fff !important;
   background-color: #2e3236 !important;

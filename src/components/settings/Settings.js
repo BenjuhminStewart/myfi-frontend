@@ -103,7 +103,7 @@ export const Settings = () => {
   };
 
   return (
-    <div className="box bg-dark text-white">
+    <div>
       <Navbar />
       <Form className="login-form" onSubmit={onSubmit}>
         <FormGroup>

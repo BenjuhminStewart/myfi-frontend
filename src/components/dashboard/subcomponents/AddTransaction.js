@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import { Category } from "./Category";
 import { Code } from "./Code";
+import { selectedId } from "./Balance";
 
 export const AddTransaction = () => {
   const { addTransaction, codes, getCodes, categories, getCategories } =
@@ -9,16 +10,41 @@ export const AddTransaction = () => {
 
   const [desc, setDesc] = useState("");
   const [amount, setAmount] = useState(0);
+  const [code, setCode] = useState("");
+  const [category, setCategory] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  console.log(selectedId);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    const transaction = {
-      desc: desc,
-      amount: +amount,
-    };
+    if (selectedId == 0) {
+      setErrorMessage("No Account Selected");
+    } else if (amount === 0) {
+      setErrorMessage("Cannot have purchase of $0");
+    } else if (code === "") {
+      setErrorMessage("No currency code selected");
+    } else if (category === "") {
+      setErrorMessage("No category selected");
+    } else {
+      const transaction = {
+        cId: selectedId,
+        desc: desc,
+        amount: +amount,
+        curr_code: code,
+        category: category,
+      };
 
-    addTransaction(transaction);
+      console.log(JSON.stringify(transaction));
+      setErrorMessage("");
+      addTransaction(transaction);
+
+      setAmount(0);
+      setDesc("");
+      setCode("USD");
+      setCategory("none");
+    }
   };
 
   useEffect(() => {
@@ -49,19 +75,25 @@ export const AddTransaction = () => {
           />
         </div>
         <div>
-          <label htmlFor="selectCategory">Currency</label>
-          <select className="form-select">
-            <option value="none" selected disabled hidden>
-              Select a Currency
+          <label for="selectCurrency">Currency</label>
+          <select
+            className="form-select"
+            onChange={(e) => setCode(e.target.value)}
+          >
+            <option value="USD" selected disabled hidden>
+              {"USD"}
             </option>
-            {codes.map((code) => (
-              <Code key={code} code={code} />
-            ))}
+            {codes.map((code) => {
+              <Code key={code} code={code} />;
+            })}
           </select>
         </div>
         <div>
-          <label for="selectCategory">Currency</label>
-          <select className="form-select">
+          <label for="selectCategory">Category</label>
+          <select
+            className="form-select"
+            onChange={(e) => setCategory(e.target.value)}
+          >
             <option value="none" selected disabled hidden>
               Select a Category
             </option>
@@ -71,6 +103,7 @@ export const AddTransaction = () => {
           </select>
         </div>
         <button className="my-btn mt-4">Add transaction</button>
+        <p className="text-danger text-center">{errorMessage}</p>
       </form>
     </>
   );

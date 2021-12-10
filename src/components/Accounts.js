@@ -1,8 +1,7 @@
-import axios from "axios";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
 import Navbar from "./navbar/Navbar.js";
-import { GlobalContext } from "./dashboard/context/GlobalState";
+
 
 export const Accounts = () => {
   const [codes, setCodes] = useState([]);
@@ -12,20 +11,42 @@ export const Accounts = () => {
   const [code, setCode] = useState("");
   const [type, setType] = useState(0);
 
+
+  const [message, setMessage] = useState("");
+  const [className, setClassName] = useState("");
   const [success, setSuccess] = useState(false);
 
   var APICallString = "https://tcss445-myfi.herokuapp.com/api/codes/";
-
+  var APIPostString =
+    "https://tcss445-myfi.herokuapp.com/api/accounts/checkings";
   const fetchCodes = async () => {
     await axios
-      .get(APICallString, { withCredentials: true })
+      .get(APICallString)
+
       .then((res) => {
         setCodes(res.data.codes);
       })
       .catch((err) => {
-        window.location.href = "/";
+
+        //window.location.href = "/";
       });
   };
+
+  const postAccount = async () => {
+    const account = {
+      bankName: bankName,
+      currBal: balance,
+      currCode: code,
+      limit: 1,
+    };
+    try {
+      await axios.post(APIPostString, account, { withCredentials: true });
+    } catch (error) {
+      console.log("Request Error -> at Accounts.java postAccount() method");
+    }
+  };
+
+
   useEffect(() => {
     fetchCodes();
   }, []);
@@ -33,27 +54,17 @@ export const Accounts = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (type === 0) {
-      setSuccess(false);
+    if (bankName === "") {
+      setMessage("No Bank Name Entered");
+      setClassName("text-danger text-center");
+    } else if (type === 0) {
+      setMessage("No Account Type Entered");
+      setClassName("text-danger text-center");
     } else {
-      const account = {
-        bankName: bankName,
-        currBal: balance,
-        limit: 1,
-        curr_code: code,
-        // accountType: type,
-      };
+      postAccount();
+      setClassName("text-success text-center");
+      setMessage("Successfully Added Account");
 
-      try {
-        axios.post(
-          "https://tcss445-myfi.herokuapp.com/api/accounts/checkings",
-          account,
-          { withCredentials: true }
-        );
-        setSuccess(true);
-      } catch (error) {
-        setSuccess(false);
-      }
     }
   };
 
@@ -117,6 +128,9 @@ export const Accounts = () => {
             </select>
           </div>
           <button className="my-btn mt-4">Add Account</button>
+
+          <p className={className}>{message}</p>
+
         </form>
       </div>
     </>

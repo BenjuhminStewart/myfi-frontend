@@ -3,6 +3,8 @@ import { GlobalContext } from "../context/GlobalState";
 
 import { Account } from "./Account";
 
+export var selectedId = 0;
+
 export const Balance = () => {
   const {
     transactions,
@@ -28,6 +30,7 @@ export const Balance = () => {
       } else {
         console.log(e.target.value);
         filterTransactions(Number.parseInt(e.target.value));
+        selectedId = Number.parseInt(e.target.value);
       }
     } catch (error) {
       console.log(error);

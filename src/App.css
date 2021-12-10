@@ -87,3 +87,10 @@ body {
 .text-center {
   text-align: center !important;
 }
+
+.center-element {
+  width: 600px;
+  min-height: 50px;
+  padding-top: 35px;
+  margin: auto;
+}

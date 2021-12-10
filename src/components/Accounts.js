@@ -26,7 +26,7 @@ export const Accounts = () => {
     await axios
       .get(APICallString)
       .then((res) => {
-        setCodes(res.data.codes);
+        setCodes(res.data);
       })
       .catch((err) => {
         //window.location.href = "/";

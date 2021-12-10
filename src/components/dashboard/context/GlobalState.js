@@ -124,7 +124,7 @@ export const GlobalProvider = ({ children }) => {
       );
       dispatch({
         type: "GET_CODES",
-        payload: res.data.codes,
+        payload: res.data,
       });
     } catch (err) {
       dispatch({

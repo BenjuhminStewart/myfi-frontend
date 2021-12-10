@@ -1,33 +1,47 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "../App.css";
 import Navbar from "./navbar/Navbar.js";
 
-
 export const Accounts = () => {
   const [codes, setCodes] = useState([]);
+  const [types, setTypes] = useState([]);
 
   const [bankName, setBankName] = useState("");
   const [balance, setBalance] = useState(0);
   const [code, setCode] = useState("");
-  const [type, setType] = useState(0);
-
+  const [type, setType] = useState(-1);
 
   const [message, setMessage] = useState("");
   const [className, setClassName] = useState("");
   const [success, setSuccess] = useState(false);
 
   var APICallString = "https://tcss445-myfi.herokuapp.com/api/codes/";
-  var APIPostString =
-    "https://tcss445-myfi.herokuapp.com/api/accounts/checkings";
+  var APICallTypeString =
+    "https://tcss445-myfi.herokuapp.com/api/accountTypes/";
+
+  var APIPostString = "https://tcss445-myfi.herokuapp.com/api/accounts";
+
   const fetchCodes = async () => {
     await axios
       .get(APICallString)
-
       .then((res) => {
-        setCodes(res.data.codes);
+        setCodes(res.data);
       })
       .catch((err) => {
+        //window.location.href = "/";
+      });
+  };
 
+  const fetchTypes = async () => {
+    await axios
+      .get(APICallTypeString)
+      .then((response) => {
+        console.log(response.data);
+        console.log(response.data.types);
+        setTypes(response.data);
+      })
+      .catch((err) => {
         //window.location.href = "/";
       });
   };
@@ -37,7 +51,7 @@ export const Accounts = () => {
       bankName: bankName,
       currBal: balance,
       currCode: code,
-      limit: 1,
+      accType: type,
     };
     try {
       await axios.post(APIPostString, account, { withCredentials: true });
@@ -46,9 +60,9 @@ export const Accounts = () => {
     }
   };
 
-
   useEffect(() => {
     fetchCodes();
+    fetchTypes();
   }, []);
 
   const onSubmit = (e) => {
@@ -57,14 +71,13 @@ export const Accounts = () => {
     if (bankName === "") {
       setMessage("No Bank Name Entered");
       setClassName("text-danger text-center");
-    } else if (type === 0) {
+    } else if (type === -1) {
       setMessage("No Account Type Entered");
       setClassName("text-danger text-center");
     } else {
       postAccount();
       setClassName("text-success text-center");
       setMessage("Successfully Added Account");
-
     }
   };
 
@@ -120,17 +133,17 @@ export const Accounts = () => {
               className="form-select"
               onChange={(e) => setType(e.target.value)}
             >
-              <option value={0} selected disabled hidden>
+              <option value={-1} selected disabled hidden>
                 Select an Account Type
               </option>
-              <option value={1}>Checkings</option>
-              <option value={2}>Savings</option>
+              {types.map((type) => {
+                return <option value={type}>{type}</option>;
+              })}
             </select>
           </div>
           <button className="my-btn mt-4">Add Account</button>
 
           <p className={className}>{message}</p>
-
         </form>
       </div>
     </>

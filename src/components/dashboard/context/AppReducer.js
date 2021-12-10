@@ -21,7 +21,7 @@ export default (state, action) => {
         ...state,
         loading: false,
         transactions: state.filtered.filter(
-          (transaction) => transaction.cId == action.payload
+          (transaction) => transaction.aId == action.payload
         ),
       };
     case "DELETE_TRANSACTION":

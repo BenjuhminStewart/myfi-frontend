@@ -19,7 +19,7 @@ export const AddTransaction = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (selectedId == 0) {
+    if (selectedId === -1) {
       setErrorMessage("No Account Selected");
     } else if (amount === 0) {
       setErrorMessage("Cannot have purchase of $0");
@@ -29,7 +29,7 @@ export const AddTransaction = () => {
       setErrorMessage("No category selected");
     } else {
       const transaction = {
-        cId: selectedId,
+        aId: selectedId,
         desc: desc,
         amount: +amount,
         curr_code: code,
@@ -42,8 +42,6 @@ export const AddTransaction = () => {
 
       setAmount(0);
       setDesc("");
-      setCode("USD");
-      setCategory("none");
     }
   };
 
@@ -80,11 +78,11 @@ export const AddTransaction = () => {
             className="form-select"
             onChange={(e) => setCode(e.target.value)}
           >
-            <option value="USD" selected disabled hidden>
-              {"USD"}
+            <option value="none" selected disabled hidden>
+              Select a Currency
             </option>
-            {codes.map((code) => {
-              <Code key={code} code={code} />;
+            {codes.map((cd) => {
+              return <option value={cd}>{cd}</option>;
             })}
           </select>
         </div>
@@ -97,8 +95,8 @@ export const AddTransaction = () => {
             <option value="none" selected disabled hidden>
               Select a Category
             </option>
-            {categories.map((category) => (
-              <Category key={category} category={category} />
+            {categories.map((cg) => (
+              <Category key={cg} category={cg} />
             ))}
           </select>
         </div>

@@ -3,7 +3,7 @@ import { GlobalContext } from "../context/GlobalState";
 
 import { Account } from "./Account";
 
-export var selectedId = 0;
+export var selectedId = -1;
 
 export const Balance = () => {
   const {
@@ -26,6 +26,7 @@ export const Balance = () => {
   function handleEvent(e) {
     try {
       if (e.target.value == -1 || e.target.value == "All Accounts") {
+        selectedId = Number.parseInt(e.target.value);
         getTransactions();
       } else {
         console.log(e.target.value);
@@ -47,7 +48,7 @@ export const Balance = () => {
         >
           <option value={-1}>All Accounts</option>
           {accounts.map((account) => (
-            <Account key={accounts.checkings_id} account={account} />
+            <Account key={accounts.acc_id} account={account} />
           ))}
         </select>
       </div>

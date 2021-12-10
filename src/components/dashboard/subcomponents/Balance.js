@@ -20,6 +20,15 @@ export const Balance = () => {
   }, []);
 
   let balance = 0;
+  for (const account of accounts) {
+    if (selectedId == -1) {
+      balance += account.balance;
+    } else if (account.acc_id == selectedId) {
+      balance = account.balance;
+      break;
+    }
+  }
+
   for (const amount of amounts) balance += amount;
   const negative = balance < 0 ? "-" : "";
 

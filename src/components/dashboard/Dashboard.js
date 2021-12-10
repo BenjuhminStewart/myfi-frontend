@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "./context/GlobalState";
 
 import { Balance } from "./subcomponents/Balance";
@@ -11,7 +11,15 @@ import Navbar from "../navbar/Navbar.js";
 import "./Dashboard.css";
 
 export const Dashboard = () => {
-  const { accounts } = useContext(GlobalContext);
+  const { accounts, getAccounts } = useContext(GlobalContext);
+
+  // if we decided against this because of the annoying popup before refresh
+  // get rid of useeffect here and only use return in else statement
+
+  useEffect(() => {
+    getAccounts();
+  }, []);
+
   if (accounts.length == 0) {
     return (
       <div>

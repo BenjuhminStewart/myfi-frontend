@@ -1,7 +1,7 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "../App.css";
 import Navbar from "./navbar/Navbar.js";
+
 
 export const Accounts = () => {
   const [codes, setCodes] = useState([]);
@@ -10,6 +10,7 @@ export const Accounts = () => {
   const [balance, setBalance] = useState(0);
   const [code, setCode] = useState("");
   const [type, setType] = useState(0);
+
 
   const [message, setMessage] = useState("");
   const [className, setClassName] = useState("");
@@ -21,10 +22,12 @@ export const Accounts = () => {
   const fetchCodes = async () => {
     await axios
       .get(APICallString)
+
       .then((res) => {
         setCodes(res.data.codes);
       })
       .catch((err) => {
+
         //window.location.href = "/";
       });
   };
@@ -43,6 +46,7 @@ export const Accounts = () => {
     }
   };
 
+
   useEffect(() => {
     fetchCodes();
   }, []);
@@ -60,6 +64,7 @@ export const Accounts = () => {
       postAccount();
       setClassName("text-success text-center");
       setMessage("Successfully Added Account");
+
     }
   };
 
@@ -123,7 +128,9 @@ export const Accounts = () => {
             </select>
           </div>
           <button className="my-btn mt-4">Add Account</button>
+
           <p className={className}>{message}</p>
+
         </form>
       </div>
     </>

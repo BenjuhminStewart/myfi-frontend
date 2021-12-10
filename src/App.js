@@ -11,6 +11,7 @@ import Register from "./components/Register";
 import { Home } from "./components/home/Home";
 import { Settings } from "./components/settings/Settings";
 import { Accounts } from "./components/Accounts";
+
 import Transactions from "./components/Transactions";
 
 export default function App() {

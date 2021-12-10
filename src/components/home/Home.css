@@ -98,6 +98,19 @@ h5 {
   margin: 10px 0;
 }
 
+.list button.list-buttons {
+  background-color: #2e3236 !important;
+  border-radius: 5px;
+  font-weight: bold;
+  box-shadow: var(--box-shadow);
+  color: #fff;
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  margin: 10px;
+  border: 0;
+}
+
 .accounts {
   display: block;
   width: 100%;

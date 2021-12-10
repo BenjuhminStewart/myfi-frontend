@@ -6,68 +6,19 @@ const HomeAccounts = () => {
       <h4 className="text-center">Select an account</h4>
       <hr></hr>
       <ul className="list">
-        <li>
-          <a href="#" className="accounts">
-            All Accounts
-          </a>
-        </li>
+        <button className="list-buttons">All Accounts</button>
       </ul>
       <h5>Checkings</h5>
       <ul className="list">
-        <li>
-          <a href="#" className="accounts">
-            1
-          </a>
-        </li>
-        <li>
-          <a href="#" className="accounts">
-            1
-          </a>
-        </li>
-        <li>
-          <a href="#" className="accounts">
-            1
-          </a>
-        </li>
-        <li>
-          <a href="#" className="accounts">
-            1
-          </a>
-        </li>
-        <li>
-          <a href="#" className="accounts">
-            1
-          </a>
-        </li>
+        <button className="list-buttons">Umpqua</button>
+        <button className="list-buttons">Bank of America</button>
+        <button className="list-buttons">Chase</button>
       </ul>
       <hr></hr>
       <h5>Savings</h5>
       <ul className="list">
-        <li>
-          <a href="#" className="accounts">
-            1
-          </a>
-        </li>
-        <li>
-          <a href="#" className="accounts">
-            1
-          </a>
-        </li>
-        <li>
-          <a href="#" className="accounts">
-            1
-          </a>
-        </li>
-        <li>
-          <a href="#" className="accounts">
-            1
-          </a>
-        </li>
-        <li>
-          <a href="#" className="accounts">
-            1
-          </a>
-        </li>
+        <button className="list-buttons">Retirement</button>
+        <button className="list-buttons">BECU</button>
       </ul>
     </div>
   );

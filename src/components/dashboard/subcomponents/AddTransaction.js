@@ -42,8 +42,6 @@ export const AddTransaction = () => {
 
       setAmount(0);
       setDesc("");
-      setCode("none");
-      setCategory("none");
     }
   };
 
@@ -84,7 +82,7 @@ export const AddTransaction = () => {
               Select a Currency
             </option>
             {codes.map((cd) => {
-              <Code key={cd} code={cd} />;
+              return <option value={cd}>{cd}</option>;
             })}
           </select>
         </div>

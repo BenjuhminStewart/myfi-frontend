@@ -1,0 +1,28 @@
+.header-div {
+  margin-top: 20px;
+  margin: auto;
+  width: 40%;
+}
+.PADME {
+  padding-top: 50px;
+}
+hr.new3 {
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 1px;
+}
+hr.new54 {
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 2px;
+}
+
+.myfi {
+  color: rgb(11, 194, 11);
+}
+
+.p-text {
+  color: white;
+  line-height: 40px;
+  margin-top: 10px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}

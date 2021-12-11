@@ -9,6 +9,31 @@ export default (state, action) => {
         loading: false,
         accounts: action.payload,
       };
+    case "GET_ACCOUNT_HISTORY":
+      return {
+        ...state,
+        loading: false,
+        history: action.payload,
+      };
+    case "GET_ACCOUNT_ID_HISTORY":
+      return {
+        ...state,
+        loading: false,
+        history: action.payload,
+      };
+    case "GET_ACCOUNT_CATEGORY_HISTORY":
+      return {
+        ...state,
+        loading: false,
+        history: action.payload,
+      };
+    case "GET_ACCOUNT_CATEGORY_ID_HISTORY":
+      return {
+        ...state,
+        loading: false,
+        history: action.payload,
+      };
+
     case "GET_TRANSACTION":
       return {
         ...state,
@@ -41,6 +66,18 @@ export default (state, action) => {
         ...state,
         loading: false,
         categories: action.payload,
+      };
+    case "GET_CATEGORY_REPORT":
+      return {
+        ...state,
+        loading: false,
+        categoryReports: action.payload,
+      };
+    case "GET_ID_CATEGORY_REPORT":
+      return {
+        ...state,
+        loading: false,
+        categoryReports: action.payload,
       };
     case "GET_CODES":
       return {

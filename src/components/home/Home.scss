@@ -24,7 +24,7 @@ body {
 
 .left-box {
   float: left;
-  width: 50%;
+  width: 42%;
   min-height: 50px;
   background-image: linear-gradient(#05050585, #ffffff0e) !important;
   background-repeat: no-repeat;
@@ -34,7 +34,7 @@ body {
 
 .center-box {
   float: left;
-  width: 49%;
+  width: 57%;
   margin-left: 1%;
   min-height: 50px;
   background-image: linear-gradient(#05050585, #ffffff0e) !important;
@@ -45,7 +45,7 @@ body {
 
 .right-box {
   float: left;
-  width: 49%;
+  width: 57%;
   margin-left: 1%;
   margin-top: 1%;
   min-height: 50px;
@@ -58,25 +58,6 @@ body {
 .categories {
   display: block;
   height: 100%;
-}
-
-h1 {
-  letter-spacing: 1px;
-  color: #fff;
-  margin: 0;
-}
-
-h2 {
-  letter-spacing: 1px;
-  color: #fff;
-  margin: 0;
-}
-
-h3 {
-  border-bottom: 1px solid #bbb;
-  padding-bottom: 10px;
-  color: #fff;
-  margin: 40px 0 10px;
 }
 
 h4 {
@@ -96,7 +77,7 @@ h5 {
   padding-top: 30px;
   margin: auto;
   height: 1000px;
-  width: 90%;
+  width: 65%;
 }
 
 .li-margin {
@@ -106,7 +87,7 @@ h5 {
 .list {
   list-style-type: none;
   padding: 0;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .list li {
@@ -122,18 +103,29 @@ h5 {
   margin: 10px 0;
 }
 
+$btn-bg: #2e3236 !important;
+$btn-hover-bg: #464646bd !important;
 .list button.list-buttons {
   background-color: #2e3236 !important;
+
   border-radius: 5px;
   font-weight: bold;
   box-shadow: var(--box-shadow);
-  color: #fff;
+
   display: flex;
   padding: 10px;
   width: 100%;
+
   margin: 10px 10px 10px 0px;
+
   border: 0;
   justify-content: space-between;
+
+  color: #fff;
+  overflow: hidden;
+  &:hover {
+    background-color: $btn-hover-bg;
+  }
 }
 
 .list-span {

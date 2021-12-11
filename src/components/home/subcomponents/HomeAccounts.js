@@ -1,9 +1,16 @@
 import React, { useState, useContext, useEffect } from "react";
 import { GlobalContext } from "../../dashboard/context/GlobalState";
-
+import { catId } from "./HomeCategory";
 export var clicked = -1;
 const HomeAccounts = () => {
-  const { getCategoryReport, getAllCategoryReport } = useContext(GlobalContext);
+  const {
+    getCategoryReport,
+    getAllCategoryReport,
+    getAccountsHistory1N,
+    getAccountsHistoryN1,
+    getAccountsHistoryNM,
+    getAccountsHistory11,
+  } = useContext(GlobalContext);
   const { getAccounts, accounts } = useContext(GlobalContext);
   const [className, setClassName] = useState("");
 
@@ -13,14 +20,22 @@ const HomeAccounts = () => {
   }, []);
 
   const handleEvent = (e) => {
-    console.log(`e.target.value: ${e.target.value}`);
     clicked = Number.parseInt(e.target.value);
     if (clicked == -1) {
       getAllCategoryReport();
+      if (catId != -1) {
+        getAccountsHistoryN1(catId);
+      } else {
+        getAccountsHistoryNM();
+      }
     } else {
       getCategoryReport(clicked);
+      if (catId != -1) {
+        getAccountsHistory11();
+      } else {
+        getAccountsHistory1N(clicked);
+      }
     }
-    console.log(`clicked: ${clicked}`);
   };
 
   return (

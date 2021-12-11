@@ -13,6 +13,7 @@ import { Settings } from "./components/settings/Settings";
 import { Accounts } from "./components/Accounts";
 
 import Transactions from "./components/Transactions";
+import LearnMore from "./components/LearnMore";
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
           }
         />
         <Route exact path="/register" element={<Register />} />
+        <Route exact path="/learn-more" element={<LearnMore />} />
 
         <Route
           exact

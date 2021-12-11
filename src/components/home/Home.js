@@ -2,7 +2,7 @@ import React from "react";
 
 import Navbar from "../navbar/Navbar.js";
 
-import "./Home.css";
+import "./Home.scss";
 import HomeAccounts from "./subcomponents/HomeAccounts.js";
 import HomeCategory from "./subcomponents/HomeCategory.js";
 import HomeSummary from "./subcomponents/HomeSummary.js";

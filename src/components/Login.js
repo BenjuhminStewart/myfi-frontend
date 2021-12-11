@@ -81,9 +81,9 @@ const LoginForm = () => {
             Register
           </Link>
           <span className="p-2">|</span>
-          <a href="/learn-more" className="text-decoration-none myfi-text">
+          <Link to="/learn-more" className="text-decoration-none myfi-text">
             Learn More
-          </a>
+          </Link>
         </div>
       </Form>
     </div>

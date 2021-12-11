@@ -46,7 +46,7 @@ export const GlobalProvider = ({ children }) => {
       );
       dispatch({
         type: "GET_ACCOUNT_HISTORY",
-        payload: res.data.categoryReport,
+        payload: res.data,
       });
     } catch (err) {
       dispatch({
@@ -63,7 +63,7 @@ export const GlobalProvider = ({ children }) => {
       );
       dispatch({
         type: "GET_ACCOUNT_ID_HISTORY",
-        payload: res.data.categoryReport,
+        payload: res.data,
       });
     } catch (err) {
       dispatch({
@@ -80,7 +80,7 @@ export const GlobalProvider = ({ children }) => {
       );
       dispatch({
         type: "GET_ACCOUNT_CATEGORY_HISTORY",
-        payload: res.data.categoryReport,
+        payload: res.data,
       });
     } catch (err) {
       dispatch({
@@ -97,7 +97,7 @@ export const GlobalProvider = ({ children }) => {
       );
       dispatch({
         type: "GET_ACCOUNT_CATEGORY_ID_HISTORY",
-        payload: res.data.categoryReport,
+        payload: res.data,
       });
     } catch (err) {
       dispatch({

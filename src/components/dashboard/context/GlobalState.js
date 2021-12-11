@@ -42,7 +42,7 @@ export const GlobalProvider = ({ children }) => {
   async function getAccountsHistoryNM() {
     try {
       const res = await axios.get(
-        "https://tcss445-myfi.herokuapp.com/api/accounts/summary"
+        "https://tcss445-myfi.herokuapp.com/api/accounts/summary/"
       );
       dispatch({
         type: "GET_ACCOUNT_HISTORY",
@@ -93,7 +93,7 @@ export const GlobalProvider = ({ children }) => {
   async function getAccountsHistory11(aId, cId) {
     try {
       const res = await axios.get(
-        `https://tcss445-myfi.herokuapp.com/api/accounts/summary/${aId}/$${cId}`
+        `https://tcss445-myfi.herokuapp.com/api/accounts/summary/${aId}/${cId}`
       );
       dispatch({
         type: "GET_ACCOUNT_CATEGORY_ID_HISTORY",

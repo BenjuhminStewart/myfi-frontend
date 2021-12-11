@@ -4,6 +4,8 @@ import axios from "axios";
 
 // initial state
 const initialState = {
+  categoryReports: [],
+  history: [],
   transactions: [],
   filtered: [],
   accounts: [],
@@ -32,6 +34,110 @@ export const GlobalProvider = ({ children }) => {
     } catch (err) {
       dispatch({
         type: "ACCOUNT_ERROR",
+        payload: err.details,
+      });
+    }
+  }
+
+  async function getAccountsHistoryNM() {
+    try {
+      const res = await axios.get(
+        "https://tcss445-myfi.herokuapp.com/api/accounts/summary"
+      );
+      dispatch({
+        type: "GET_ACCOUNT_HISTORY",
+        payload: res.data.categoryReport,
+      });
+    } catch (err) {
+      dispatch({
+        type: "ACCOUNT_HISTORY_ERROR",
+        payload: err.details,
+      });
+    }
+  }
+
+  async function getAccountsHistory1N(id) {
+    try {
+      const res = await axios.get(
+        `https://tcss445-myfi.herokuapp.com/api/accounts/summary/account/${id}`
+      );
+      dispatch({
+        type: "GET_ACCOUNT_ID_HISTORY",
+        payload: res.data.categoryReport,
+      });
+    } catch (err) {
+      dispatch({
+        type: "ACCOUNT_ID_HISTORY_ERROR",
+        payload: err.details,
+      });
+    }
+  }
+
+  async function getAccountsHistoryN1(id) {
+    try {
+      const res = await axios.get(
+        `https://tcss445-myfi.herokuapp.com/api/accounts/summary/category/${id}`
+      );
+      dispatch({
+        type: "GET_ACCOUNT_CATEGORY_HISTORY",
+        payload: res.data.categoryReport,
+      });
+    } catch (err) {
+      dispatch({
+        type: "ACCOUNT_CATEGORY_HISTORY_ERROR",
+        payload: err.details,
+      });
+    }
+  }
+
+  async function getAccountsHistory11(aId, cId) {
+    try {
+      const res = await axios.get(
+        `https://tcss445-myfi.herokuapp.com/api/accounts/summary/${aId}/$${cId}`
+      );
+      dispatch({
+        type: "GET_ACCOUNT_CATEGORY_ID_HISTORY",
+        payload: res.data.categoryReport,
+      });
+    } catch (err) {
+      dispatch({
+        type: "ACCOUNT_CATEGORY_ID_HISTORY_ERROR",
+        payload: err.details,
+      });
+    }
+  }
+
+  async function getCategoryReport(id) {
+    try {
+      const res = await axios.get(
+        `https://tcss445-myfi.herokuapp.com/api/accounts/category-report/${id}/`,
+        { withCredentials: true }
+      );
+      dispatch({
+        type: "GET_ID_CATEGORY_REPORT",
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: "ID_CATEGORY_REPORT_ERROR",
+        payload: err.details,
+      });
+    }
+  }
+
+  async function getAllCategoryReport() {
+    try {
+      const res = await axios.get(
+        "https://tcss445-myfi.herokuapp.com/api/accounts/category-report/",
+        { withCredentials: true }
+      );
+      dispatch({
+        type: "GET_CATEGORY_REPORT",
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: "CATEGORY_REPORT_ERROR",
         payload: err.details,
       });
     }
@@ -144,8 +250,16 @@ export const GlobalProvider = ({ children }) => {
         accounts: state.accounts,
         error: state.error,
         loading: state.loading,
+        history: state.history,
+        getAccountsHistoryNM,
+        getAccountsHistory1N,
+        getAccountsHistoryN1,
+        getAccountsHistory11,
         getCodes,
         getCategories,
+        categoryReports: state.categoryReports,
+        getCategoryReport,
+        getAllCategoryReport,
         getAccounts,
         getTransactions,
         filterTransactions,

@@ -42,7 +42,7 @@ const LoginForm = () => {
   console.log(`username: ${username} \npassword: ${password}`);
 
   return (
-    <div className="box bg-dark text-white">
+    <div>
       <Form className="login-form" onSubmit={(e) => login(e)}>
         <h1 className="text-center text-decoration-none mt-5">
           <span className="font-weight-bold">My</span>
@@ -72,7 +72,7 @@ const LoginForm = () => {
             <span className="invalid-credentials">Invalid credentials!</span>
           </div>
         )}
-        <div className="text-center pt-3">
+        <div className="text-center pt-3 text-white">
           Or continue with your social account
         </div>
         <GithubLoginButton className="mt-3 mb-3" />

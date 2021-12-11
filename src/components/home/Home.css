@@ -133,6 +133,12 @@ h5 {
   width: 100%;
   margin: 10px 10px 10px 0px;
   border: 0;
+  justify-content: space-between;
+}
+
+.list-span {
+  color: #2ecc71;
+  padding-right: 10px;
 }
 
 .accounts {

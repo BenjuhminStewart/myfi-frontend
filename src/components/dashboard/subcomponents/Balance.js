@@ -16,6 +16,7 @@ export const Balance = () => {
   const amounts = transactions.map((transaction) => transaction.amount);
 
   useEffect(() => {
+    selectedId = -1;
     getAccounts();
   }, []);
 

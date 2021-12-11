@@ -30,14 +30,6 @@ body {
   width: 100%;
 }
 
-.box {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-}
-
 .login-form {
   width: 100%;
   max-width: 330px;

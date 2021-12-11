@@ -18,7 +18,6 @@ const RegisterForm = () => {
   const [passwordError, setPasswordError] = useState(false);
   const [passwordMatchError, setPasswordMatchError] = useState(false);
 
-  // TODO: validate fname, minit, lname, phoneNo
   const [blankFnameError, setBlankFnameError] = useState(false);
   const [blankMinitialError, setBlankMinitialError] = useState(false);
   const [blankLnameError, setBlankLnameError] = useState(false);
@@ -84,7 +83,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="box bg-dark text-white">
+    <div>
       <Form className="login-form" onSubmit={(e) => register(e)}>
         <h2 className="text-center mb-3 p-3">Register</h2>
         <FormGroup>

@@ -78,7 +78,10 @@ const HomeCategory = () => {
               >
                 {category.category}
                 <span className="text-danger">
-                  -${Math.abs(category.totalSpent)}
+                  -$
+                  {Math.abs(category.totalSpent)
+                    .toFixed(2)
+                    .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                 </span>
               </button>
             );
@@ -90,7 +93,12 @@ const HomeCategory = () => {
                 onClick={(e) => handleEvent(e)}
               >
                 {category.category}
-                <span className="text-success">${category.totalSpent}</span>
+                <span className="text-success">
+                  $
+                  {Math.abs(category.totalSpent)
+                    .toFixed(2)
+                    .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
+                </span>
               </button>
             );
           }

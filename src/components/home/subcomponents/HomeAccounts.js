@@ -51,7 +51,7 @@ const HomeAccounts = () => {
           All Accounts
         </button>
       </ul>
-      <h5>Checkings</h5>
+      <h3>Checking</h3>
       <ul className="list">
         {accounts
           .filter((account) => account.acc_type_id == 1)
@@ -68,7 +68,7 @@ const HomeAccounts = () => {
           })}
       </ul>
       <hr></hr>
-      <h5>Savings</h5>
+      <h3>Savings</h3>
       <ul className="list">
         {accounts
           .filter((account) => account.acc_type_id == 2)

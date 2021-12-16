@@ -8,7 +8,7 @@ export const Accounts = () => {
   const [types, setTypes] = useState([]);
 
   const [bankName, setBankName] = useState("");
-  const [balance, setBalance] = useState(0);
+  const [balance, setBalance] = useState(0.0);
   const [code, setCode] = useState("");
   const [type, setType] = useState(-1);
 
@@ -100,6 +100,7 @@ export const Accounts = () => {
             <label htmlFor="amount">Balance</label>
             <input
               type="number"
+              step={0.01}
               onChange={(e) => setBalance(e.target.value)}
               placeholder="Enter Initial Balance..."
             />

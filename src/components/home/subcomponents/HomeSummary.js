@@ -42,7 +42,14 @@ const HomeSummary = () => {
             if (hist.maxDeposited < 0) {
               return <span className="text-success">${0}</span>;
             } else {
-              return <span className="text-success">${hist.maxDeposited}</span>;
+              return (
+                <span className="text-success">
+                  $
+                  {Math.abs(hist.maxDeposited)
+                    .toFixed(2)
+                    .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
+                </span>
+              );
             }
           })}
         </li>
@@ -51,7 +58,12 @@ const HomeSummary = () => {
           {history.map((hist) => {
             if (hist.maxSpent < 0) {
               return (
-                <span className="text-danger">-${Math.abs(hist.maxSpent)}</span>
+                <span className="text-danger">
+                  -$
+                  {Math.abs(hist.maxSpent)
+                    .toFixed(2)
+                    .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
+                </span>
               );
             } else {
               return <span className="text-white">${0}</span>;
@@ -64,11 +76,21 @@ const HomeSummary = () => {
             if (hist.averageCost < 0) {
               return (
                 <span className="text-white">
-                  -${Math.abs(hist.averageCost)}
+                  -$
+                  {Math.abs(hist.averageCost)
+                    .toFixed(2)
+                    .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                 </span>
               );
             }
-            return <span className="text-white">${hist.averageCost}</span>;
+            return (
+              <span className="text-white">
+                $
+                {Math.abs(hist.averageCost)
+                  .toFixed(2)
+                  .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
+              </span>
+            );
           })}
         </li>
         <li className="li-margin">

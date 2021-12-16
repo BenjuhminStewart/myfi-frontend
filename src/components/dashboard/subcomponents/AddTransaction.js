@@ -10,7 +10,7 @@ export const AddTransaction = () => {
 
   const [desc, setDesc] = useState("");
   const [amount, setAmount] = useState(0);
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState("USD");
   const [category, setCategory] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -82,7 +82,15 @@ export const AddTransaction = () => {
               Select a Currency
             </option>
             {codes.map((cd) => {
-              return <option value={cd}>{cd}</option>;
+              if (cd == "USD") {
+                return (
+                  <option value={cd} selected>
+                    {cd}
+                  </option>
+                );
+              } else {
+                return <option value={cd}>{cd}</option>;
+              }
             })}
           </select>
         </div>

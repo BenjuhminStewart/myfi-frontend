@@ -52,7 +52,10 @@ export const Balance = () => {
     <>
       <h4>Account Balance</h4>
       <h2>
-        {negative}${Math.abs(balance).toFixed(2)}
+        {negative}$
+        {Math.abs(balance)
+          .toFixed(2)
+          .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
       </h2>
       <div className="pb-3 pt-1">
         <select

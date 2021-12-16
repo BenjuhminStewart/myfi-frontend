@@ -10,7 +10,10 @@ export const Transaction = ({ transaction }) => {
     <li className={type}>
       {transaction.desc}
       <span>
-        {sign}${Math.abs(transaction.amount)}
+        {sign}$
+        {Math.abs(transaction.amount)
+          .toFixed(2)
+          .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
       </span>
       <button
         className="delete-btn"
